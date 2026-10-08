@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamer Zone | Store Jeux, PC, Consoles & Equipements</title>
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Stripe & PayPal SDKs -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo"><i class="fa-solid fa-gamepad"></i> GAMER<span>ZONE</span></a>
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="searchInput" placeholder="Rechercher un jeu, PC Gamer, Clavier, Souris, GPU...">
+            </div>
+            <div class="cart-icon" onclick="toggleCart()">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="cart-badge" id="cartBadge">0</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Boutique Gaming Ultimate <span>Jeux, PC, Consoles & Setup</span></h1>
+        <p>Achetez vos jeux graphismes ultra-réalistes, PC Gamer RTX 4090, Claviers, Souris et Écrans OLED !</p>
+    </section>
+
+    <!-- Category Filters -->
+    <div class="filter-section">
+        <button class="filter-btn active" onclick="filterProducts('all', this)"><i class="fa-solid fa-border-all"></i> Tout le Store</button>
+        <button class="filter-btn" onclick="filterProducts('pc_gamer', this)"><i class="fa-solid fa-desktop"></i> PC Gamer Setups</button>
+        <button class="filter-btn" onclick="filterProducts('consoles', this)"><i class="fa-solid fa-tv"></i> Consoles</button>
+        <button class="filter-btn" onclick="filterProducts('keyboards_mice', this)"><i class="fa-solid fa-keyboard"></i> Claviers & Souris</button>
+        <button class="filter-btn" onclick="filterProducts('pc_hardware', this)"><i class="fa-solid fa-microchip"></i> Composants Hardware</button>
+        <button class="filter-btn" onclick="filterProducts('accessoires', this)"><i class="fa-solid fa-headset"></i> Écrans & Accessoires</button>
+        <button class="filter-btn" onclick="filterProducts('rockstar', this)"><i class="fa-solid fa-star"></i> Rockstar Games</button>
+        <button class="filter-btn" onclick="filterProducts('sony', this)"><i class="fa-brands fa-playstation"></i> Exclusifs Sony</button>
+        <button class="filter-btn" onclick="filterProducts('capcom', this)"><i class="fa-solid fa-biohazard"></i> Resident Evil / Capcom</button>
+        <button class="filter-btn" onclick="filterProducts('tendance', this)"><i class="fa-solid fa-fire"></i> Tendances 🔥</button>
+    </div>
+
+    <!-- Products Catalogue -->
+    <main class="games-grid" id="gamesGrid"></main>
+
+    <!-- Panier Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-header">
+            <h3>Votre Panier</h3>
+            <i class="fa-solid fa-xmark close-cart" onclick="toggleCart()"></i>
+        </div>
+
+        <div class="cart-items" id="cartItems"></div>
+
+        <div class="cart-total">
+            <span>Total:</span>
+            <span id="cartTotal">$0</span>
+        </div>
+
+        <div class="payment-methods">
+            <button class="stripe-btn" onclick="payWithStripe()">
+                <i class="fa-solid fa-credit-card"></i> Payer par Carte (Stripe)
+            </button>
+            <div id="paypal-button-container"></div>
+        </div>
+    </div>
+
+    <!-- Contact Form -->
+    <section class="contact-section">
+        <h2><i class="fa-solid fa-envelope"></i> Contactez-nous Directement</h2>
+        <form class="contact-form" action="https://formsubmit.co/aminejammouh@gmail.com" method="POST">
+            <input type="text" name="name" placeholder="Votre Nom" required>
+            <input type="email" name="email" placeholder="Votre Email" required>
+            <input type="text" name="subject" placeholder="Sujet de votre demande (Achat, Setup sur-mesure...)" required>
+            <textarea name="message" rows="5" placeholder="Saisissez les détails de votre demande..." required></textarea>
+            <button type="submit">Envoyer à aminejammouh@gmail.com</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 GamerZone Store. Tous droits réservés. Contact: aminejammouh@gmail.com</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
